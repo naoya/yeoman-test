@@ -1,0 +1,29 @@
+<style>
+.todo-true {
+  color: gray;
+  text-decoration: line-through;
+}
+</style>
+<div>
+  <h1>Todos</h1>
+  <form novalidate name="myForm" ng-submit="addTodo()">
+  <p>
+    <input type="text" name="title" ng-model="todo.title" required>
+    <input type="submit" value="add" ng-disabled="myForm.$invalid">
+    <span ng-show="myForm.title.$error.required">required</span>
+  </p>
+  </form>
+  <ul>
+    <li ng-repeat="todo in todo_list">
+      <input type="checkbox" ng-model="todo.state" />
+      <span class="todo-{{todo.state}}">{{todo.title}}</del>
+      <a href="" ng-click="removeTodo($index)">[x]</a>
+    </li>
+  </ul>
+
+  <h2>Debug</h2>
+<pre>
+{{todo_list|json}}
+</pre>
+
+</div>
